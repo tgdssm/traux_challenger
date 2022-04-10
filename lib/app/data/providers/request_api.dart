@@ -27,9 +27,9 @@ class RequestAPI {
     return movies;
   }
 
-  Future<List<Movie>> searchMovies(String movieName) async {
+  Future<List<Movie>> searchMovies(String movieName, int page) async {
     List<Movie> movies = [];
-    final response = await myHttpService.get("https://api.themoviedb.org/3/search/movie?api_key=$API_KEY&query=$movieName");
+    final response = await myHttpService.get("https://api.themoviedb.org/3/search/movie?api_key=$API_KEY&query=$movieName&page=$page");
 
     if(response != null) {
       movies = Movie.fromJsonToList(response['results']);

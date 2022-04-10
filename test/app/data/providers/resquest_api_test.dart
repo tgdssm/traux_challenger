@@ -17,6 +17,6 @@ void main() {
   });
 
   test('Deve retornar uma lista de filmes que contem os caracteres pesquisas', ()async{
-    expect(await requestAPI.searchMovies("Mega"), isA<List<Movie>>());
+    expect(await requestAPI.searchMovies("Mega", 1), isA<List<Movie>>());
   });
 }

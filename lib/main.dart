@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:traux_challenger/app/routes/app_routes.dart';
 import 'package:traux_challenger/app/routes/generate_routes.dart';
 
 import 'app/ui/home/home.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       onGenerateRoute: (settings) => GenerateRoutes.onGenerateRoute(settings),
-      home: const Home()
+      initialRoute: AppRoutes.HOME,
     );
   }
 }

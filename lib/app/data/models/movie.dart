@@ -17,7 +17,6 @@ class Movie {
   late bool video;
   late double voteAverage;
   late int voteCount;
-  late String releaseDate;
   BelongsToCollection? belongsToCollection;
   int? budget;
   String? status;
@@ -33,6 +32,7 @@ class Movie {
   List<int>? genreIds;
   String? backdropPath;
   String? posterPath;
+  String? releaseDate;
 
 
 
@@ -71,7 +71,7 @@ class Movie {
     belongsToCollection: json["belongs_to_collection"] != null ?
     BelongsToCollection.fromJson(json["belongs_to_collection"]) : null,
     budget: json["budget"],
-    genres: json["genre_ids"] != null ?
+    genres: json["genres"] == null ?
     globalGenres.where((element) => json["genre_ids"].contains(element.id)).toList():
     Genre.fromJsonToList(json["genres"]),
     homepage: json["homepage"],
