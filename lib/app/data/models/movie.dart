@@ -8,13 +8,11 @@ import 'genre.dart';
 
 class Movie {
   late bool adult;
-  late String backdropPath;
   late int id;
   late String originalLanguage;
   late String originalTitle;
   late String overview;
   late double popularity;
-  late String posterPath;
   late String title;
   late bool video;
   late double voteAverage;
@@ -33,27 +31,19 @@ class Movie {
   List<SpokenLanguage>? spokenLanguages;
   List<Genre>? genres;
   List<int>? genreIds;
+  String? backdropPath;
+  String? posterPath;
+
 
 
   Movie({
     required this.adult,
-    required this.backdropPath,
-    required this.homepage,
     required this.id,
-    required this.imdbId,
     required this.originalLanguage,
     required this.originalTitle,
     required this.overview,
     required this.popularity,
-    required this.posterPath,
-    required this.productionCompanies,
-    required this.productionCountries,
     required this.releaseDate,
-    required this.revenue,
-    required this.runtime,
-    required this.spokenLanguages,
-    required this.status,
-    required this.tagline,
     required this.title,
     required this.video,
     required this.voteAverage,
@@ -61,7 +51,18 @@ class Movie {
     this.belongsToCollection,
     this.budget,
     this.genres,
-    this.genreIds
+    this.genreIds,
+    this.revenue,
+    this.runtime,
+    this.spokenLanguages,
+    this.status,
+    this.tagline,
+    this.productionCompanies,
+    this.productionCountries,
+    this.backdropPath,
+    this.homepage,
+    this.imdbId,
+    this.posterPath,
   });
 
   factory Movie.fromJson(Map<String, dynamic> json) => Movie(

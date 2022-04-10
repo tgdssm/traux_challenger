@@ -1,5 +1,4 @@
 import 'package:traux_challenger/app/data/clients/my_http_service.dart';
-import 'package:traux_challenger/app/data/models/page.dart';
 import 'package:traux_challenger/app/utils/globals.dart';
 
 import '../models/genre.dart';
@@ -12,9 +11,9 @@ class RequestAPI {
   late MyHttpService myHttpService;
   RequestAPI({required this.myHttpService});
 
-  Future<Page> fetchMovies(int page) async {
+  Future<List<Movie>> fetchMovies(int page) async {
     if(globalGenres.isEmpty) {
-      globalGenres = await fetchGenres();
+      globalGenres = await _fetchGenres();
     }
 
 
@@ -23,8 +22,20 @@ class RequestAPI {
 
     if(response != null) {
       movies = Movie.fromJsonToList(response['results']);
+      lastPage = response['total_pages'];
     }
-    return Page.fromJson(response, movies);
+    return movies;
+  }
+
+  Future<List<Movie>> searchMovies(String movieName) async {
+    List<Movie> movies = [];
+    final response = await myHttpService.get("https://api.themoviedb.org/3/search/movie?api_key=$API_KEY&query=$movieName");
+
+    if(response != null) {
+      movies = Movie.fromJsonToList(response['results']);
+      lastPage = response['total_pages'];
+    }
+    return movies;
   }
 
   Future<Movie> fetchMovie(int id)async {
@@ -37,14 +48,13 @@ class RequestAPI {
   }
   
 
-  Future<List<Genre>> fetchGenres() async {
+  Future<List<Genre>> _fetchGenres() async {
     List<Genre> genres = [];
     final response = await myHttpService.get("https://api.themoviedb.org/3/genre/movie/list?api_key=$API_KEY");
     response['genres'].forEach((genre){
       genres.add(Genre.fromJson(genre as Map<String, dynamic>));
     });
     return genres;
-
   }
 
 }
