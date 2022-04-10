@@ -1,10 +1,12 @@
 import 'package:test/test.dart';
 import 'package:traux_challenger/app/data/clients/dio_implement.dart';
+import 'package:traux_challenger/app/data/clients/http_implement.dart';
 import 'package:traux_challenger/app/data/models/movie.dart';
 import 'package:traux_challenger/app/data/providers/request_api.dart';
 
 void main() {
-  final requestAPI = RequestAPI(myHttpService: DioImplement());
+  final requestAPI = RequestAPI(myHttpService: HttpImplement());
+  // final requestAPI = RequestAPI(myHttpService: DioImplement());
 
   test('Deve retornar uma pagina sem erros', () async {
     expect(await requestAPI.fetchMovies(1), isA<List<Movie>>());
