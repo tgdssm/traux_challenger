@@ -19,10 +19,12 @@ class HomeController extends GetxController {
   }
 
   Future<void> fSearchMovies() async {
+    currentPage = 1;
     movies.value = await _homeRepository.searchMovies(searchMovies.text, currentPage);
     scrollController.position.jumpTo(0);
   }
 
+  // Limita a quantidade de categorias na view
   String getCategories(int index) {
     if(movies[index].genres!.isEmpty) {
       return "";

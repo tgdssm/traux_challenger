@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:traux_challenger/app/data/models/movie.dart';
-import 'package:traux_challenger/app/data/models/production_company.dart';
 import 'package:traux_challenger/app/data/repositories/details_repository.dart';
 
 class DetailsController extends GetxController{
@@ -27,6 +26,8 @@ class DetailsController extends GetxController{
       }
     } return "";
   }
+
+  // Limita a quantidade de categorias na view
 
   int getCategories() {
     if(movie.genres!.isEmpty) {
@@ -67,18 +68,7 @@ class DetailsController extends GetxController{
   }
 
 
-  // String getCast() {
-  //   String cast = "";
-  //   for (var element in movie.credits!.cast) {
-  //     if(element == movie.credits!.cast.last) {
-  //       cast += element.name;
-  //     } else {
-  //       cast += "${element.name}, ";
-  //     }
-  //   }
-  //   return cast;
-  // }
-
+  // Limita a quantidade de pessoal do elenco na view
   String getCast() {
     String cast = "";
     int middle = movie.credits!.cast.length <= 10 ?
