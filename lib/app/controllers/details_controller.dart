@@ -66,9 +66,24 @@ class DetailsController extends GetxController{
     return directors;
   }
 
+
+  // String getCast() {
+  //   String cast = "";
+  //   for (var element in movie.credits!.cast) {
+  //     if(element == movie.credits!.cast.last) {
+  //       cast += element.name;
+  //     } else {
+  //       cast += "${element.name}, ";
+  //     }
+  //   }
+  //   return cast;
+  // }
+
   String getCast() {
     String cast = "";
-    int middle = (movie.credits!.cast.length / 2).round();
+    int middle = movie.credits!.cast.length <= 10 ?
+    movie.credits!.cast.length - 1 : (movie.credits!.cast.length / 2).round();
+
     for (var i = 0; i <= middle; i++) {
       if(movie.credits!.cast[i] == movie.credits!.cast[middle]) {
         cast += movie.credits!.cast[i].name;
@@ -82,7 +97,5 @@ class DetailsController extends GetxController{
   String formatCurrency() {
     return NumberFormat.simpleCurrency().format(movie.budget);
   }
-
-
 
 }
