@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
                          itemCount: _controller.movies.length,
                          shrinkWrap: true,
                          itemBuilder: (context, index) {
-                           return InkWell(
+                           return GestureDetector(
                              onTap: (){
                                Get.toNamed(AppRoutes.DETAILS, arguments: _controller.movies[index].id);
                              },
