@@ -119,7 +119,9 @@ class _DetailsState extends State<Details> {
                       Align(
                         alignment: Alignment.centerLeft,
                           child: Text("Descrição", style: GoogleFonts.montserrat(color: Colors.grey, fontSize: 15, fontWeight: FontWeight.w300),)),
-                      Text(_controller.movie.overview, style: GoogleFonts.montserrat(color: Colors.black, fontSize: 15, fontWeight: FontWeight.w500), textAlign: TextAlign.justify,),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                          child: Text(_controller.movie.overview, style: GoogleFonts.montserrat(color: Colors.black, fontSize: 15, fontWeight: FontWeight.w500), textAlign: TextAlign.justify,)),
                       const SizedBox(height: 10,),
                       DateDuration(label: "ORÇAMENTO: ", data: _controller.formatCurrency()),
                       const SizedBox(height: 10,),
