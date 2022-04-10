@@ -1,15 +1,15 @@
 class ProductionCompany {
 
   late int id;
-  late String logoPath;
+  String? logoPath;
   late String name;
   late String originCountry;
 
   ProductionCompany({
     required this.id,
-    required this.logoPath,
     required this.name,
     required this.originCountry,
+    this.logoPath,
   });
 
   factory ProductionCompany.fromJson(Map<String, dynamic> json) => ProductionCompany(

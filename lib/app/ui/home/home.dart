@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:traux_challenger/app/controllers/home_controller.dart';
+import 'package:traux_challenger/app/routes/app_routes.dart';
 import 'package:traux_challenger/app/utils/globals.dart';
 
 class Home extends StatefulWidget {
@@ -74,7 +75,7 @@ class _HomeState extends State<Home> {
                          itemBuilder: (context, index) {
                            return InkWell(
                              onTap: (){
-
+                               Get.toNamed(AppRoutes.DETAILS, arguments: _controller.movies[index].id);
                              },
                              child: Container(
                                height: 360,
